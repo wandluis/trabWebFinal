@@ -7,7 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-
 import pweb.domain.enums.Genero;
 
 public class Autor implements Serializable{
@@ -101,5 +100,4 @@ public class Autor implements Serializable{
 			return false;
 		return true;
 	}
-	
 }
