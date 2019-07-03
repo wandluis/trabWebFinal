@@ -7,9 +7,9 @@ import pweb.trabfinal.domain.Livro;
 
 public interface LivroRepository extends JpaRepository<Livro, Integer>{
 	
-	List<Livro> findDistinctByNomeContainingAndAutoresIn(
-			String nome,
-			List<Autor> categorias
+	List<Livro> findDistinctByTituloContainingAndAutoresIn(
+			String titulo,
+			List<Autor> autores
 	);
 	
 	Livro save(Autor obj);
