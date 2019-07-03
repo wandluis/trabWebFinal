@@ -33,5 +33,9 @@ public class LivroService {
 		List<Autor> autores = autRep.findAllById(ids);
 		return rep.findDistinctByTituloContainingAndAutoresIn(titulo, autores);
 	}
+	
+	public List<Livro> findAll(){
+		return rep.findAll();
+	}
 
 }

@@ -53,4 +53,14 @@ public class LivroResource {
 				path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
+	
+	@RequestMapping(value = "/all",method=RequestMethod.GET)
+	public ResponseEntity<List<LivroDTO>> findAll() {
+		List<Livro> lista = service.findAll();
+		List<LivroDTO> listaDTO = new ArrayList<LivroDTO>();
+		for (Livro c : lista) {
+			listaDTO.add(new LivroDTO(c));
+		}
+		return ResponseEntity.ok().body(listaDTO);
+	}
 }

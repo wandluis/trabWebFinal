@@ -19,7 +19,7 @@ public class DevConfig {
 	
 	@Bean
 	public boolean inicializaBancoDeDados() throws ParseException {
-		System.out.println("Teste");
+		//System.out.println("Teste");
 		if (!strategy.equals("create")) {
 			return false;
 		}

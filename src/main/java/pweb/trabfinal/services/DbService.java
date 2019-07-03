@@ -27,7 +27,14 @@ public class DbService {
 		autorRep.saveAll(Arrays.asList(aut1));
 		
 		Livro liv1 = new Livro(null, "Dom Casmurro", 33.00);
-		livRep.saveAll(Arrays.asList(liv1));
+		Livro liv2 = new Livro(null, "Memórias Póstumas de Brás Cubas", 28.90);
+		
+		liv1.getAutores().addAll(Arrays.asList(aut1));
+		liv2.getAutores().addAll(Arrays.asList(aut1));
+		
+		livRep.saveAll(Arrays.asList(liv1,liv2));
+		
+		
 	
 	}
 }
