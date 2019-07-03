@@ -1,5 +1,4 @@
 package pweb.trabfinal.resources;
-
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,11 +15,11 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import pweb.trabfinal.domain.Livro;
 import pweb.trabfinal.dtos.LivroDTO;
-import pweb.trabfinal.services.LivroService;
 import pweb.trabfinal.resources.utils.URL;
+import pweb.trabfinal.services.LivroService;
 
 @RestController
-@RequestMapping(value="livros")
+@RequestMapping(value="/livros")
 public class LivroResource {
 	
 	@Autowired
@@ -34,18 +33,17 @@ public class LivroResource {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<LivroDTO>> find(
-			@RequestParam(value = "nome", defaultValue = "") String nome,
-			@RequestParam(value = "categorias", defaultValue = "") String categorias) {
+			@RequestParam(value = "titulo", defaultValue = "") String titulo,
+			@RequestParam(value = "autores", defaultValue = "") String autores) {
 
-		String nomeDecoded = URL.decodeParam(nome);
-		List<Integer> ids = URL.decodeIntList(categorias);
-		List<Livro> list = service.search(nomeDecoded, ids);
+		String tituloDecoded = URL.decodeParam(titulo);
+		List<Integer> ids = URL.decodeIntList(autores);
+		List<Livro> list = service.search(tituloDecoded, ids);
 		List<LivroDTO> listDto = new ArrayList<LivroDTO>();
 		for (Livro p : list) {
 			listDto.add(new LivroDTO(p));
 		}
 		return ResponseEntity.ok().body(listDto);
-
 	}
 	
 	@RequestMapping(method=RequestMethod.POST)
@@ -55,6 +53,4 @@ public class LivroResource {
 				path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
-
-
 }
